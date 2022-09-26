@@ -40,6 +40,18 @@ contract ZombieMarket is ZombieOwnership{
         delete zombiesShop[_zombieId];
         emit BuyShopZombie(_zombieId,msg.sender,_zombieSales.seller);
     }
+ //获取在售僵尸数量
+    function getShopZombies() external view returns(uint[] memory){
+        uint[] memory result = new uint[](shopZombieCount);
+        uint counter = 0;
+        for(uint i = 0;i < zombies.length;i++){
+            if(zombiesShop[i].price != 0){
+                result[counter] = i;
+                counter++;
+            }
+        }
+        return result;
+    }
     //设置税金
     function setTax(uint _tax) public onlyOwner{
         tax = _tax;
