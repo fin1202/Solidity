@@ -5,6 +5,8 @@ import "./zombieOwnership.sol";
 
 contract ZombieMarket is ZombieOwnership{
 
+    //市场挂牌僵尸数量
+    uint shopZombieCount;
     //税金
     uint public tax = 1 finney;
     //最低售价
